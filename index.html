@@ -1,388 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smriti Singh Bhadauriya · Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --accent: #1D9E75;
-      --accent-light: #E1F5EE;
-      --accent-mid: #0F6E56;
-      --text: #1a1a1a;
-      --muted: #6b6b6b;
-      --border: rgba(0,0,0,0.12);
-      --surface: #f6f6f4;
-      --card: #ffffff;
-      --bg: #fafaf8;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text: #e8e8e4;
-        --muted: #9a9a94;
-        --border: rgba(255,255,255,0.1);
-        --surface: #1e1e1c;
-        --card: #141412;
-        --bg: #111110;
-        --accent-light: #04342C;
-      }
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3rem 2rem 5rem;
-    }
-
-    /* Hero */
-    .hero { padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border); }
-    .hero-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .hero-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(38px, 8vw, 58px);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.08;
-    }
-    .hero-name em { font-style: italic; color: var(--accent); }
-    .hero-role {
-      font-size: 17px;
-      color: var(--muted);
-      margin-top: 0.75rem;
-      font-weight: 300;
-    }
-    .hero-contact {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .contact-pill {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 14px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      text-decoration: none;
-    }
-    .contact-pill i { font-size: 13px; color: var(--accent); }
-    .contact-pill:hover { border-color: var(--accent); color: var(--text); }
-
-    /* Sections */
-    .section { padding: 2rem 0; border-bottom: 0.5px solid var(--border); }
-    .section:last-child { border-bottom: none; }
-    .sec-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-
-    /* Experience */
-    .exp-item { margin-bottom: 1.75rem; }
-    .exp-item:last-child { margin-bottom: 0; }
-    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-    .exp-company { font-size: 16px; font-weight: 500; color: var(--text); }
-    .exp-period {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      white-space: nowrap;
-      margin-top: 2px;
-    }
-    .exp-title { font-size: 13px; color: var(--accent); margin-top: 3px; }
-    .exp-loc { font-size: 12px; color: var(--muted); margin-top: 2px; display: flex; align-items: center; gap: 4px; }
-    .bullets { margin-top: 0.75rem; list-style: none; }
-    .bullets li {
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.65;
-      padding-left: 16px;
-      position: relative;
-      margin-bottom: 5px;
-    }
-    .bullets li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
-
-    /* Projects */
-    .proj-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 12px;
-    }
-    .proj-card {
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.1rem;
-      transition: border-color 0.2s;
-    }
-    .proj-card:hover { border-color: var(--accent); }
-    .proj-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-    .proj-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
-    .proj-tag {
-      display: inline-block;
-      margin-top: 10px;
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--accent-mid);
-      background: var(--accent-light);
-      padding: 3px 10px;
-      border-radius: 100px;
-    }
-
-    /* Skills */
-    .skills-wrap { display: flex; flex-direction: column; gap: 0.85rem; }
-    .skill-row { display: flex; gap: 12px; align-items: flex-start; }
-    .skill-cat {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      min-width: 80px;
-      padding-top: 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      flex-shrink: 0;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-    .tag {
-      font-size: 12.5px;
-      color: var(--text);
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: 6px;
-      padding: 4px 11px;
-    }
-
-    /* Education */
-    .edu-block { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-    .edu-uni { font-size: 16px; font-weight: 500; color: var(--text); }
-    .edu-deg { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
-    .edu-year { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
-    .edu-courses { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
-    .edu-courses span { color: var(--accent); }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding-top: 3rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    @media (max-width: 500px) {
-      .container { padding: 2rem 1.25rem 4rem; }
-      .exp-header { flex-direction: column; gap: 4px; }
-      .edu-block { flex-direction: column; gap: 4px; }
-      .hero-contact { gap: 0.5rem; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smriti Singh Bhadauriya - Java Backend Developer Portfolio">
+  <title>Smriti Singh Bhadauriya | Java Backend Developer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-
-    <!-- Hero -->
-    <header class="hero">
-      <p class="hero-label">Software Developer · Portfolio</p>
-      <h1 class="hero-name">Smriti Singh<br><em>Bhadauriya</em></h1>
-      <p class="hero-role">Associate Software Developer · Mumbai, Maharashtra</p>
-      <div class="hero-contact">
-        <a class="contact-pill" href="tel:6307213472"><i class="ti ti-phone"></i>6307213472</a>
-        <a class="contact-pill" href="mailto:singhsmriti110@email.com"><i class="ti ti-mail"></i>singhsmriti110@email.com</a>
-        <a class="contact-pill" href="https://linkedin.com/in/smriti-singh-bhadauriya" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+  <header class="header">
+    <nav class="nav container">
+      <a href="#home" class="logo">Smriti<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
-    </header>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+    </nav>
+  </header>
 
-    <!-- Experience -->
-    <section class="section">
-      <p class="sec-label">Experience</p>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-company">Nusummit Technology</div>
-            <div class="exp-title">Associate Software Developer</div>
-            <div class="exp-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> Mumbai, Maharashtra</div>
-          </div>
-          <div class="exp-period">Jan 2026 – Present</div>
+  <main>
+    <section id="home" class="hero container">
+      <div class="hero-text reveal">
+        <p class="eyebrow">JAVA BACKEND DEVELOPER</p>
+        <h1>Hi, I'm <span>Smriti Singh Bhadauriya</span></h1>
+        <h2>Building reliable backend systems with Java & Spring Boot.</h2>
+        <p class="hero-copy">
+          Java Developer with 4 years of experience building REST APIs, backend services,
+          authentication systems and database-driven applications.
+        </p>
+        <div class="actions">
+          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#contact" class="btn secondary">Contact Me</a>
         </div>
-        <ul class="bullets">
-          <li>Application development, feature implementation, and unit testing across assigned modules</li>
-          <li>Collaborating with senior engineers to analyze requirements and ensure quality delivery</li>
-          <li>Code reviews, debugging, and defect resolution to maintain high coding standards</li>
-        </ul>
+        <div class="quick-stats">
+          <div><strong>4+</strong><span>Years Experience</span></div>
+          <div><strong>Java</strong><span>Backend Focus</span></div>
+          <div><strong>API</strong><span>Development</span></div>
+        </div>
       </div>
+      <div class="hero-card reveal">
+        <div class="code-window">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <pre><code><span class="kw">public class</span> Developer {
+  String name = <span class="str">"Smriti"</span>;
+  String role = <span class="str">"Java Developer"</span>;
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-company">Satyam Software Solution</div>
-            <div class="exp-title">Software Engineer</div>
-            <div class="exp-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> Noida, Uttar Pradesh</div>
-          </div>
-          <div class="exp-period">Aug 2022 – Dec 2025</div>
-        </div>
-        <ul class="bullets">
-          <li>Developed system-level applications on TinyCore Linux for Metro AFC Gates serving 47M+ passengers daily</li>
-          <li>Implemented QR-based ticketing replacing legacy token workflows with zero downtime migration</li>
-          <li>Built Linux desktop app for real-time EPD rendering with multilingual support (Hindi/English) and multi-bit image formats (1BP/4BP/8BP)</li>
-          <li>Engineered message-queue-based IPC framework for low-latency inter-process communication</li>
-          <li>Designed QR Ticket Validation System for Patna Metro Rail Corporation (PMRC) from scratch including validation logic, security layers, and system integration</li>
-          <li>Performance tuning and debugging using GDB and Valgrind</li>
-        </ul>
-      </div>
-    </section>
+  String[] stack = {
+    <span class="str">"Java"</span>,
+    <span class="str">"Spring Boot"</span>,
+    <span class="str">"Microservices"</span>,
+    <span class="str">"REST APIs"</span>
+  };
 
-    <!-- Projects -->
-    <section class="section">
-      <p class="sec-label">Projects</p>
-      <div class="proj-grid">
-        <div class="proj-card">
-          <div class="proj-title">Smart Parking QR System</div>
-          <div class="proj-desc">Dynamic QR ticket generation based on adult/child count with age-specific pricing and parking duration</div>
-          <span class="proj-tag">C / Linux</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">EPD Desktop Application</div>
-          <div class="proj-desc">Native desktop app for real-time text & image rendering on electronic paper display hardware with minimal memory footprint</div>
-          <span class="proj-tag">C++</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">IPC Chat System</div>
-          <div class="proj-desc">Lightweight message-queue inter-process communication system focused on low latency, reliability, and scalability</div>
-          <span class="proj-tag">C++ / Linux</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">Bank Management System</div>
-          <div class="proj-desc">Spring Boot + MySQL application for account creation, fund deposits, withdrawals, and balance management</div>
-          <span class="proj-tag">Spring Boot</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">Online Exam Quiz</div>
-          <div class="proj-desc">Full-stack quiz platform with login, CRUD quiz management, student scoring, and persistent leaderboard</div>
-          <span class="proj-tag">Spring Boot / MySQL</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">Expense Tracker</div>
-          <div class="proj-desc">Parses payment SMS texts to auto-extract and log expenses; also supports manual entry</div>
-          <span class="proj-tag">Java</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">College Management System</div>
-          <div class="proj-desc">Application for managing student records in colleges and schools using Java frontend/backend and MySQL</div>
-          <span class="proj-tag">Java / MySQL</span>
-        </div>
-        <div class="proj-card">
-          <div class="proj-title">QR Ticket Validation System</div>
-          <div class="proj-desc">End-to-end metro ticketing validation with secure data handling and fast response under high load</div>
-          <span class="proj-tag">C / Linux</span>
+  <span class="kw">public</span> String build() {
+    <span class="kw">return</span> <span class="str">"Scalable software"</span>;
+  }
+}</code></pre>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="section">
-      <p class="sec-label">Skills</p>
-      <div class="skills-wrap">
-        <div class="skill-row">
-          <span class="skill-cat">Languages</span>
-          <div class="skill-tags">
-            <span class="tag">Java / J2EE</span>
-            <span class="tag">C</span>
-            <span class="tag">C++</span>
-            <span class="tag">SQL</span>
+    <section id="about" class="section container">
+      <div class="section-head reveal">
+        <p class="eyebrow">ABOUT ME</p>
+        <h2>Backend development with a practical engineering mindset.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p>
+            I am a Java Developer focused on designing and developing backend applications
+            using Java, Spring Boot, REST APIs, JPA/Hibernate and relational databases.
+          </p>
+          <p>
+            My experience includes authentication and authorization, database integration,
+            API development, event-driven communication and application troubleshooting.
+            I enjoy learning new technologies and turning requirements into maintainable software.
+          </p>
+          <div class="availability">
+            <span class="status-dot"></span>
+            <div><strong>Open to opportunities</strong><small>Java Developer / Java Backend Developer</small></div>
           </div>
         </div>
-        <div class="skill-row">
-          <span class="skill-cat">Backend</span>
-          <div class="skill-tags">
-            <span class="tag">Spring Boot</span>
-            <span class="tag">Spring MVC</span>
-            <span class="tag">Spring Security</span>
-            <span class="tag">Hibernate</span>
-            <span class="tag">RESTful APIs</span>
-            <span class="tag">Microservices</span>
-            <span class="tag">JUnit / Mockito</span>
-            <span class="tag">Maven</span>
+        <div class="about-box reveal">
+          <div><span>Primary Language</span><strong>Java</strong></div>
+          <div><span>Backend</span><strong>Spring Boot</strong></div>
+          <div><span>Architecture</span><strong>REST / Microservices</strong></div>
+          <div><span>Database</span><strong>SQL / JPA / Hibernate</strong></div>
+          <div><span>Tools</span><strong>Git / Maven / Docker</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">TECHNICAL SKILLS</p>
+          <h2>Tools I work with</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card reveal"><span class="icon">☕</span><h3>Java</h3><p>Java 8, 11, 17 · OOP · Collections · Streams · Multithreading</p></article>
+          <article class="skill-card reveal"><span class="icon">🍃</span><h3>Spring Ecosystem</h3><p>Spring Boot · MVC · Security · Data JPA · Hibernate · JWT</p></article>
+          <article class="skill-card reveal"><span class="icon">⚡</span><h3>Backend</h3><p>REST APIs · Microservices · WebSocket · Authentication & Authorization</p></article>
+          <article class="skill-card reveal"><span class="icon">🗄️</span><h3>Databases</h3><p>MySQL · PostgreSQL · Oracle · H2 · SQL · Query Optimization</p></article>
+          <article class="skill-card reveal"><span class="icon">📨</span><h3>Messaging</h3><p>Kafka · RabbitMQ · Event-driven communication</p></article>
+          <article class="skill-card reveal"><span class="icon">⚙️</span><h3>DevOps & Tools</h3><p>Docker · Maven · Git · Jenkins · Linux · API Testing</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section container">
+      <div class="section-head reveal">
+        <p class="eyebrow">EXPERIENCE</p>
+        <h2>Professional journey</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p class="period">Jan 2026 — June 2026</p>
+            <h3>Associate Software Developer</h3>
+            <h4>Nusummit Technology</h4>
+            <ul>
+              <li>Developing and maintaining software applications using Java and backend technologies.</li>
+              <li>Working with APIs, databases and application-level problem solving.</li>
+              <li>Contributing to maintainable and production-oriented software development.</li>
+            </ul>
           </div>
         </div>
-        <div class="skill-row">
-          <span class="skill-cat">Frontend</span>
-          <div class="skill-tags">
-            <span class="tag">HTML / CSS</span>
-            <span class="tag">Flutter</span>
-            <span class="tag">JavaFX</span>
-            <span class="tag">Swing</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">Database</span>
-          <div class="skill-tags">
-            <span class="tag">MySQL</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">MongoDB</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">Tools</span>
-          <div class="skill-tags">
-            <span class="tag">Git / GitHub</span>
-            <span class="tag">Docker</span>
-            <span class="tag">CI/CD</span>
-            <span class="tag">GDB</span>
-            <span class="tag">Valgrind</span>
-            <span class="tag">IntelliJ</span>
-            <span class="tag">VS Code</span>
-            <span class="tag">Cursor AI</span>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p class="period">Aug 2022 — Dec 2025</p>
+            <h3>Software Developer</h3>
+            <h4>Satyam Software Solution</h4>
+            <ul>
+              <li>Worked on backend development and application integration.</li>
+              <li>Built and supported Java-based application functionality and APIs.</li>
+              <li>Collaborated on debugging, database integration and feature development.</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <section class="section">
-      <p class="sec-label">Education</p>
-      <div class="edu-block">
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">FEATURED PROJECTS</p>
+          <h2>Things I've built</h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-top"><span class="project-number">01</span><span>Java · Flutter</span></div>
+            <h3>BharatGram</h3>
+            <p>Social application with a Flutter frontend and Spring Boot backend, including JWT authentication, WebSocket communication and database integration.</p>
+            <div class="tags"><span>Spring Boot</span><span>JWT</span><span>WebSocket</span><span>H2</span></div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><span class="project-number">02</span><span>Backend System</span></div>
+            <h3>Smart Parking Management</h3>
+            <p>Backend application for managing parking workflows with REST APIs, relational database integration and containerized deployment.</p>
+            <div class="tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>Docker</span></div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><span class="project-number">03</span><span>Embedded · Backend</span></div>
+            <h3>Patna Metro QR Validator</h3>
+            <p>QR validation system combining a Flutter Linux GUI, C++ backend and Raspberry Pi hardware for offline ticket validation and device communication.</p>
+            <div class="tags"><span>C++</span><span>Flutter</span><span>Raspberry Pi</span><span>RabbitMQ</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container resume-section">
+      <div class="resume-card reveal">
         <div>
-          <div class="edu-uni">AKTU University</div>
-          <div class="edu-deg">Bachelor of Technology · Computer Science and Engineering</div>
-          <div class="edu-courses"><span>Coursework:</span> Data Structures, Algorithms, Databases, Computer Systems</div>
+          <p class="eyebrow">RESUME</p>
+          <h2>Looking for a Java backend opportunity?</h2>
+          <p>Download my resume or get in touch to discuss a suitable role.</p>
         </div>
-        <div class="edu-year">2018 – 2022</div>
+        <a class="btn primary" href="#" onclick="alert('Add your resume PDF as resume.pdf in this folder, then this button will work.'); return false;">Download Resume</a>
       </div>
     </section>
 
-    <footer class="footer">
-      <p>© 2026 Smriti Singh Bhadauriya</p>
-    </footer>
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">CONTACT</p>
+          <h2>Let's build something useful.</h2>
+          <p>For Java Developer, Backend Developer or software engineering opportunities, feel free to reach out.</p>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-card reveal" href="mailto:singhsmriti110@gmail.com"><span>✉</span><div><small>Email</small><strong>singhsmriti110@gmail.com</strong></div></a>
+          <a class="contact-card reveal" href="https://www.linkedin.com/in/smriti-singh-bhadauriya/" target="_blank" rel="noopener"><span>in</span><div><small>LinkedIn</small><strong>LinkedIn Profile</strong></div></a>
+          <a class="contact-card reveal" href="https://github.com/smritisingh110" target="_blank" rel="noopener"><span>⌘</span><div><small>GitHub</small><strong>GitHub Profile</strong></div></a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  </div>
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Smriti Singh Bhadauriya</p>
+      <p>Java Backend Developer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
